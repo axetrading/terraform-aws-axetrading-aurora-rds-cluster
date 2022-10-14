@@ -13,7 +13,7 @@ resource "aws_rds_cluster" "this" {
   db_subnet_group_name = aws_db_subnet_group.this.0.name
 
   availability_zones = var.availability_zones
-  database_name      = var.name
+  database_name      = var.database_name
   master_username    = var.master_username
   master_password    = random_password.password.0.result
 
@@ -43,7 +43,7 @@ resource "aws_rds_cluster" "this" {
 resource "aws_db_subnet_group" "this" {
   count = var.present ? 1 : 0
 
-  name       = var.name
+  name       = var.subnet_group_name != null && var.subnet_group_name != "" ? var.subnet_group_name : format("%s-%s", var.cluster_identifier, "subnet-group")
   subnet_ids = var.subnet_ids
 }
 

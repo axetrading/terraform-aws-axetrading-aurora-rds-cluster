@@ -2,7 +2,7 @@ module "terratest_rds_cluster" {
   source              = "../../"
   cluster_identifier  = "terratest"
   availability_zones  = ["eu-west-2a", "eu-west-2b", "eu-west-2c"]
-  name                = "terratest"
+  database_name       = "terratest"
   master_username     = "terratest"
   storage_encrypted   = true
   apply_immediately   = true

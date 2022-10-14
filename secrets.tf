@@ -5,7 +5,7 @@ resource "aws_secretsmanager_secret" "this" {
   description             = "Secret to contain password for RDS"
   recovery_window_in_days = 0
   kms_key_id              = var.secrets_manager_kms_key_id
-  policy                  = var.secret_policy
+  policy                  = try(data.aws_iam_policy_document.secret_policy[0].json, var.secret_policy)
 }
 
 resource "aws_secretsmanager_secret_version" "this" {

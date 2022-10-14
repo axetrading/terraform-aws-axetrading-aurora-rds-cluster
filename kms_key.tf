@@ -5,7 +5,7 @@ resource "aws_kms_key" "this" {
   description              = "KMS key used for the encryption of Aurora"
   key_usage                = var.key_usage
   customer_master_key_spec = var.customer_master_key_spec
-  policy                   = var.kms_key_policy
+  policy                   = try(data.aws_iam_policy_document.kms_policy[0].json, var.kms_key_policy)
   deletion_window_in_days  = var.deletion_window_in_days
   is_enabled               = var.is_enabled
   enable_key_rotation      = var.enable_key_rotation

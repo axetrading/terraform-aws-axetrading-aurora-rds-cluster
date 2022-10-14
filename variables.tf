@@ -12,7 +12,6 @@ variable "region" {
 
 variable "cluster_identifier" {
   description = "The cluster identifier. If omitted, Terraform will assign a random, unique identifier."
-  default     = null
   type        = string
 }
 
@@ -22,10 +21,16 @@ variable "availability_zones" {
   description = "List of EC2 Availability Zones for the DB cluster storage where DB cluster instances can be created. RDS automatically assigns 3 AZs if less than 3 AZs are configured, which will show as a difference requiring resource recreation next Terraform apply"
 }
 
-variable "name" {
+variable "database_name" {
   type        = string
   description = "Name for an automatically created database on cluster creation"
-  default     = ""
+  default     = null
+}
+
+variable "subnet_group_name" {
+  type        = string
+  description = "Name for an automatically created database on cluster creation"
+  default     = null
 }
 
 variable "master_username" {
@@ -346,7 +351,7 @@ variable "tags" {
 variable "account_id" {
   type        = string
   description = "AWS Account ID"
-  default     = ""
+  default     = null
 }
 
 variable "principals" {
