@@ -82,7 +82,6 @@ variable "engine_mode" {
 
 variable "engine_version" {
   type        = string
-  default     = ""
   description = "The version of the database engine to use. See `aws rds describe-db-engine-versions` "
 }
 
