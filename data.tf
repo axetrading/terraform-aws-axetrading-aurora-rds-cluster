@@ -18,6 +18,6 @@ data "aws_iam_policy_document" "kms_policy" {
 
 data "aws_iam_policy_document" "secret_policy" {
   count                     = var.create_secret && local.account_id != null ? 1 : 0
-  source_json               = templatefile("${path.module}/assets/policy/secret/default.json.tpl", { account_id = local.account_id })
+  source_policy_documents               = [templatefile("${path.module}/assets/policy/secret/default.json.tpl", { account_id = local.account_id })]
   override_policy_documents = var.custom_secret_policies
 }
