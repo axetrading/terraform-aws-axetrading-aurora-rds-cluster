@@ -38,6 +38,8 @@ resource "aws_rds_cluster" "this" {
   allow_major_version_upgrade         = var.allow_major_version_upgrade
   enabled_cloudwatch_logs_exports     = var.enabled_cloudwatch_logs_exports
   iam_database_authentication_enabled = var.iam_database_authentication_enabled
+
+  tags = var.tags
 }
 
 resource "aws_db_subnet_group" "this" {
@@ -67,6 +69,8 @@ resource "aws_rds_cluster_instance" "this" {
   preferred_maintenance_window = try(each.value.preferred_maintenance_window, null)
   auto_minor_version_upgrade   = try(each.value.auto_minor_version_upgrade, false)
   copy_tags_to_snapshot        = var.copy_tags_to_snapshot
+
+  tags = var.tags
 
   timeouts {
     create = try(each.value.timeouts.create, null)

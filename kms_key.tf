@@ -1,4 +1,7 @@
 # Default KMS Key for Secret encryption
+locals {
+  kms_key_tags = { Name = var.kms_key_name }
+}
 resource "aws_kms_key" "this" {
   count = var.present && var.kms_key_present ? 1 : 0
 
@@ -10,9 +13,7 @@ resource "aws_kms_key" "this" {
   is_enabled               = var.is_enabled
   enable_key_rotation      = var.enable_key_rotation
 
-  tags = {
-    Name = var.kms_key_name
-  }
+  tags = merge(local.kms_key_tags, var.tags)
 }
 
 # AWS KMS Key Alias
