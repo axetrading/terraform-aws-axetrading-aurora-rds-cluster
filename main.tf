@@ -15,7 +15,7 @@ resource "aws_rds_cluster" "this" {
   availability_zones = var.availability_zones
   database_name      = var.database_name
   master_username    = var.master_username
-  master_password    = random_password.password.0.result
+  master_password    = var.snapshot_identifier != null ? null : random_password.password.0.result
 
   apply_immediately      = var.apply_immediately
   backtrack_window       = var.backtrack_window
@@ -31,6 +31,7 @@ resource "aws_rds_cluster" "this" {
   storage_encrypted      = var.storage_encrypted
   vpc_security_group_ids = concat([aws_security_group.this[0].id], var.vpc_security_group_ids)
 
+  snapshot_identifier                 = var.snapshot_identifier
   final_snapshot_identifier           = format("%s-%s", var.cluster_identifier, var.final_snapshot_identifier_suffix)
   skip_final_snapshot                 = var.skip_final_snapshot
   backup_retention_period             = var.backup_retention_period
