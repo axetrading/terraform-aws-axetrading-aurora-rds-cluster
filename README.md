@@ -13,8 +13,8 @@ Terraform module for AWS Aurora RDS Cluster
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.34.0 |
-| <a name="provider_random"></a> [random](#provider\_random) | 3.4.3 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | ~> 4.34 |
+| <a name="provider_random"></a> [random](#provider\_random) | n/a |
 
 ## Resources
 
@@ -111,4 +111,5 @@ Terraform module for AWS Aurora RDS Cluster
 | <a name="output_rds_cluster_reader_endpoint"></a> [rds\_cluster\_reader\_endpoint](#output\_rds\_cluster\_reader\_endpoint) | A read-only endpoint for the Aurora cluster, automatically load-balanced across replicas |
 | <a name="output_rds_cluster_secret_id"></a> [rds\_cluster\_secret\_id](#output\_rds\_cluster\_secret\_id) | Aurora RDS Cluster Secret ID |
 | <a name="output_rds_cluster_security_group_id"></a> [rds\_cluster\_security\_group\_id](#output\_rds\_cluster\_security\_group\_id) | Aurora RDS Cluster Security Group |
+| <a name="output_rds_hosted_zone_id"></a> [rds\_hosted\_zone\_id](#output\_rds\_hosted\_zone\_id) | The canonical hosted zone ID of the DB instance (to be used in a Route 53 Alias record) |
 <!-- END_TF_DOCS -->

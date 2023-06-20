@@ -32,3 +32,8 @@ output "rds_cluster_reader_endpoint" {
   value       = try(aws_rds_cluster.this.0.reader_endpoint, "")
   description = "A read-only endpoint for the Aurora cluster, automatically load-balanced across replicas"
 }
+
+output "rds_hosted_zone_id" {
+  value       = try(aws_rds_cluster.this.0.hosted_zone_id, "")
+  description = "The canonical hosted zone ID of the DB instance (to be used in a Route 53 Alias record)"
+}
