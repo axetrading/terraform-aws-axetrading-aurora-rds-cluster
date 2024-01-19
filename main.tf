@@ -13,9 +13,8 @@ resource "aws_rds_cluster" "this" {
   db_subnet_group_name = aws_db_subnet_group.this.0.name
 
   availability_zones            = var.availability_zones
-  database_name                 = var.database_name
   master_username               = var.master_username
-  master_password               = var.snapshot_identifier != null && var.manage_master_user_password ? null : random_password.password.0.result
+  master_password               = var.snapshot_identifier != null && var.manage_master_user_password != true ? null : random_password.password.0.result
   manage_master_user_password   = var.master_password == null && var.manage_master_user_password ? var.manage_master_user_password : null
   master_user_secret_kms_key_id = var.manage_master_user_password && var.kms_key_present ? aws_kms_key.this[0].arn : try(var.master_user_secret_kms_key_id, null)
 
