@@ -365,3 +365,20 @@ variable "snapshot_identifier" {
   default     = null
 }
 
+variable "manage_master_user_password" {
+  description = "Set to true to allow RDS to manage the master user password in Secrets Manager. Cannot be set if master_password is provided"
+  type        = bool
+  default     = true
+}
+
+variable "master_password" {
+  description = "Password for the master DB user. Note that this may show up in logs, and it will be stored in the state file"
+  type        = string
+  default     = null
+}
+
+variable "master_user_secret_kms_key_id" {
+  description = "Amazon Web Services KMS key identifier is the key ARN, key ID, alias ARN, or alias name for the KMS key. To use a KMS key in a different Amazon Web Services account, specify the key ARN or alias ARN. If not specified, the default KMS key for your Amazon Web Services account is used."
+  type        = string
+  default     = null
+} 
