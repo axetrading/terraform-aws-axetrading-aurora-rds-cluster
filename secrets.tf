@@ -13,16 +13,17 @@ resource "aws_secretsmanager_secret_version" "this" {
 
   secret_id = aws_secretsmanager_secret.this.0.id
   secret_string = jsonencode({
-    "clusteridentifier" = var.cluster_identifier
-    "db_name"           = try(aws_rds_cluster.this.0.database_name, "")
-    "engine"            = try(aws_rds_cluster.this.0.engine, "")
-    "hosted_zone_id"    = try(aws_rds_cluster.this.0.hosted_zone_id, "")
-    "port"              = try(aws_rds_cluster.this.0.port, "")
-    "id"                = try(aws_rds_cluster.this.0.id, "")
-    "master_username"   = try(aws_rds_cluster.this.0.master_username, "")
-    "master_password"   = random_password.password.0.result
-    "endpoint"          = try(aws_rds_cluster.this.0.endpoint, "")
-    "reader_endpoint"   = try(aws_rds_cluster.this.0.reader_endpoint, "")
-    "db_encrypted"      = try(aws_rds_cluster.this.0.storage_encrypted, "")
+    "clusteridentifier"  = var.cluster_identifier
+    "db_name"            = try(aws_rds_cluster.this.0.database_name, "")
+    "engine"             = try(aws_rds_cluster.this.0.engine, "")
+    "hosted_zone_id"     = try(aws_rds_cluster.this.0.hosted_zone_id, "")
+    "port"               = try(aws_rds_cluster.this.0.port, "")
+    "id"                 = try(aws_rds_cluster.this.0.id, "")
+    "master_username"    = try(aws_rds_cluster.this.0.master_username, "")
+    "master_password"    = try(random_password.password.0.result, "")
+    "master_user_secret" = try(aws_rds_cluster.this.0.master_user_secret[0].secret_arn, "")
+    "endpoint"           = try(aws_rds_cluster.this.0.endpoint, "")
+    "reader_endpoint"    = try(aws_rds_cluster.this.0.reader_endpoint, "")
+    "db_encrypted"       = try(aws_rds_cluster.this.0.storage_encrypted, "")
   })
 }
