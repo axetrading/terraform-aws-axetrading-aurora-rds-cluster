@@ -111,6 +111,7 @@ Terraform module for AWS Aurora RDS Cluster
 | <a name="output_rds_cluster_endpoint"></a> [rds\_cluster\_endpoint](#output\_rds\_cluster\_endpoint) | The DNS address of the RDS instance |
 | <a name="output_rds_cluster_id"></a> [rds\_cluster\_id](#output\_rds\_cluster\_id) | Aurora RDS Cluster ID |
 | <a name="output_rds_cluster_identifier"></a> [rds\_cluster\_identifier](#output\_rds\_cluster\_identifier) | Aurora RDS Cluster ID |
+| <a name="output_rds_cluster_managed_master_password_secret"></a> [rds\_cluster\_managed\_master\_password\_secret](#output\_rds\_cluster\_managed\_master\_password\_secret) | The name of the secret containing the master user password |
 | <a name="output_rds_cluster_reader_endpoint"></a> [rds\_cluster\_reader\_endpoint](#output\_rds\_cluster\_reader\_endpoint) | A read-only endpoint for the Aurora cluster, automatically load-balanced across replicas |
 | <a name="output_rds_cluster_secret_id"></a> [rds\_cluster\_secret\_id](#output\_rds\_cluster\_secret\_id) | Aurora RDS Cluster Secret ID |
 | <a name="output_rds_cluster_security_group_id"></a> [rds\_cluster\_security\_group\_id](#output\_rds\_cluster\_security\_group\_id) | Aurora RDS Cluster Security Group |
