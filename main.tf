@@ -1,6 +1,3 @@
-locals {
-  
-}
 resource "random_password" "password" {
   count = var.present && var.manage_master_user_password != true ? 1 : 0
 
@@ -17,7 +14,7 @@ resource "aws_rds_cluster" "this" {
 
   availability_zones            = var.availability_zones
   master_username               = var.master_username
-  master_password               = var.snapshot_identifier == null && !var.manage_master_user_password ? random_password.password.0.result : null 
+  master_password               = var.snapshot_identifier == null && !var.manage_master_user_password ? random_password.password.0.result : null
   manage_master_user_password   = var.master_password == null && var.manage_master_user_password ? var.manage_master_user_password : null
   master_user_secret_kms_key_id = var.manage_master_user_password && var.kms_key_present ? aws_kms_key.this[0].arn : try(var.master_user_secret_kms_key_id, null)
 
