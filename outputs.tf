@@ -39,6 +39,6 @@ output "rds_hosted_zone_id" {
 }
 
 output "rds_cluster_managed_master_password_secret" {
-  value       = try(aws_rds_cluster.this.0.master_user_secret.secret_arn, "")
+  value       = try(aws_rds_cluster.this.0.master_user_secret, "")
   description = "The name of the secret containing the master user password"
 }
