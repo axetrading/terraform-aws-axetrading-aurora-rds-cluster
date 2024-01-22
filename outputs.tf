@@ -37,3 +37,8 @@ output "rds_hosted_zone_id" {
   value       = try(aws_rds_cluster.this.0.hosted_zone_id, "")
   description = "The canonical hosted zone ID of the DB instance (to be used in a Route 53 Alias record)"
 }
+
+output "rds_cluster_managed_master_password_secret" {
+  value       = try(aws_rds_cluster.this.0.master_user_secret.secret_arn, "")
+  description = "The name of the secret containing the master user password"
+}
